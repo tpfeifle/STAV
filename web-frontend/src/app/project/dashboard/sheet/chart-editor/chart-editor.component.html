@@ -1,0 +1,53 @@
+<mat-card>
+  <h2>Edit Chart: {{ chart.id }}</h2>
+  <form class="example-form" [formGroup]="fooForm">
+
+    <h4>Select table to plot:</h4>
+    <mat-select placeholder="Choose Table" formControlName="selectSensorTable">
+      <mat-option *ngFor="let sensorTable of sensorTables" [value]="sensorTable">
+        {{ sensorTable.name }}
+      </mat-option>
+    </mat-select>
+
+    <h4>Choose fields to plot:</h4>
+    <div *ngIf="fooForm.value.selectSensorTable">
+      <div
+        *ngFor="let parameter of chart.parameters"
+        class="parameter-association-rows"
+        formGroupName="selectParameters"
+      >
+        <span class="parameter-label">{{ parameter.templateParameter }}</span>
+        <mat-select placeholder="Choose Parameter" [formControlName]="parameter.templateParameter">
+          <ng-container *ngIf="['size', 'color', 'description', 'groupBy'].includes(parameter.templateParameter)">
+            <mat-option
+              *ngFor="let sensorTableField of ['Default'].concat(fooForm.value.selectSensorTable.fields)"
+              [value]="sensorTableField"
+            >
+              {{ sensorTableField }}
+            </mat-option>
+          </ng-container>
+          <ng-container *ngIf="!['size', 'color', 'description', 'groupBy'].includes(parameter.templateParameter)">
+            <mat-option
+              *ngFor="let sensorTableField of fooForm.value.selectSensorTable.fields"
+              [value]="sensorTableField"
+            >
+              {{ sensorTableField }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </div>
+    </div>
+
+    <h4>Select chart-size:</h4>
+    <mat-select placeholder="width x height" formControlName="selectChartSize">
+      <mat-option *ngFor="let chartSize of chartSizes" [value]="chartSize">
+        {{ chartSize }}
+      </mat-option>
+    </mat-select>
+    <br /> <br />
+
+    <!--<h4>Custom query:</h4>
+    <textarea rows="4" placeholder="WHERE TEMPERATURE > 30" formControlName="query">{{ chart.query }}</textarea>-->
+  </form>
+  <button [disabled]="fooForm.invalid" (click)="update()" mat-stroked-button>Save</button>
+</mat-card>

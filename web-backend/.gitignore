@@ -1,0 +1,13 @@
+.idea/
+node_modules/
+ormconfig.json
+data-preprocessing/*
+data-preprocessing/scripts/*
+parser/*
+!parser/parser_interface.py
+!data-preprocessing/scripts/script_interface.py
+tempCronContent.txt
+error.txt
+log.txt
+dist/
+environments/

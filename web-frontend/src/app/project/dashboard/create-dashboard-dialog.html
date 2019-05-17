@@ -1,0 +1,9 @@
+<div mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput #dialogInput placeholder="Sheet title" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="dialogRef.close(dialogInput.value)" cdkFocusInitial>Create</button>
+</div>

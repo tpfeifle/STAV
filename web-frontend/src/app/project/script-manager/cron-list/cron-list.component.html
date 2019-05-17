@@ -1,0 +1,51 @@
+<section class="script-section">
+  <h2 class="mat-h2">List of crons</h2>
+  <button mat-icon-button color="primary" (click)="refreshCrons()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
+  <table mat-table [dataSource]="crons">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="schedule">
+      <th mat-header-cell *matHeaderCellDef>Schedule</th>
+      <td mat-cell *matCellDef="let element">{{ element.schedule }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="scripts">
+      <th mat-header-cell *matHeaderCellDef>Scripts</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-chip-list>
+          <mat-chip *ngFor="let priority of element.priorities; index as $index">
+            {{ $index + 1 }}.
+            <ng-container *ngFor="let script of priority.scripts; let isLast = last">
+              {{ script.title }}{{ isLast ? '' : ', ' }}
+            </ng-container>
+          </mat-chip>
+        </mat-chip-list>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="warn" (click)="deleteCron(element)">
+          <mat-icon>delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 100]" showFirstLastButtons></mat-paginator>
+</section>

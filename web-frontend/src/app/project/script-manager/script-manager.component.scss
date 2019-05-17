@@ -1,0 +1,35 @@
+@import "../../../theme";
+@import "~@angular/material/theming";
+
+:host {
+  display:grid;
+  grid-template-areas: 'scriptList cronList aside' 'historyList historyList aside';
+  grid-template-columns: 3fr 2fr 2fr;
+  grid-gap: 2rem;
+  height: 100%;
+  padding-top:60px;
+}
+
+app-script-manager-list {
+  margin:20px 0 0 20px;
+  grid-area: scriptList;
+}
+app-cron-list {
+  grid-area: cronList;
+  margin-top:20px;
+}
+app-script-manager-history {
+  grid-area: historyList;
+  margin-left: 20px;
+}
+aside.app-dark.mat-app-background {
+  padding: 2rem;
+  grid-area: aside;
+  background-color: mat-color($tim-app-primary, A700);
+}
+aside app-script-manager-create {
+  width: 80%;
+}
+aside app-cron-create {
+  width: 80%;
+}

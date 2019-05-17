@@ -1,0 +1,23 @@
+:host {
+  font-family: Arial;
+  height: 100%;
+}
+
+.main {
+  width: 100vw;
+  overflow: scroll;
+}
+.chart-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 10px;
+  margin: 10px;
+}
+
+.floating-fab {
+  position: fixed;
+  bottom: 80px;
+  left: 20px;
+  z-index: 100;
+}

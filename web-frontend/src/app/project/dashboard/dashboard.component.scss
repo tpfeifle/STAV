@@ -1,0 +1,42 @@
+@import "~@angular/material/theming";
+@import "../../../theme";
+
+:host {
+  display: grid;
+  grid-template-areas: 'main' 'footer';
+  grid-template-rows: auto 50px;
+  height: 100vh;
+}
+
+mat-sidenav-container.mat-drawer-container {
+  grid-area: main;
+  background-color: mat-color($mat-gray, 100);
+  min-height: 0;
+  overflow-y: scroll;
+  margin-top: 60px;
+}
+
+footer {
+  grid-area: footer;
+  z-index:10;
+  background-color: mat-color($tim-app-primary, A700);
+}
+
+footer nav .mat-tab-label-active {
+  opacity: 1;
+  color: white;
+  background-color: #333333;
+}
+
+.mat-icon {
+  margin-left: 4px;
+  opacity: 1;
+  font-size: 16px;
+  color: white;
+  margin-top: 10px;
+}
+
+.aligned-with-icon{
+  margin-left: 2px;
+  color: white;
+}

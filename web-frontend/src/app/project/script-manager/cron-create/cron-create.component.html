@@ -1,0 +1,26 @@
+<h2 class="mat-h2">Create Cron Job</h2>
+<form [formGroup]="createCronForm" (ngSubmit)="createCron()">
+  <mat-form-field>
+    <input matInput placeholder="Title" formControlName="title" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      matTooltip="(min, hour, day of month, month, day of week)"
+      placeholder="Schedule (e.g. 2 3 * * *)"
+      formControlName="schedule"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      matTooltip="'|' : separates each priority value --> runs '|' separated values sequential e.g. 1 | 2 3 | 4 5 6"
+      placeholder="Scripts (e.g. 1 | 2 3 | 4 5 6)"
+      formControlName="scripts"
+    />
+  </mat-form-field>
+
+  <button [disabled]="createCronForm.invalid" mat-raised-button color="primary">Create</button>
+</form>

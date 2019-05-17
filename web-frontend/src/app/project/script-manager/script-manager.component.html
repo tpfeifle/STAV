@@ -1,0 +1,21 @@
+<app-script-manager-list
+  (runScriptEmitter)="runScript($event)"
+  (deleteScriptEmitter)="deleteScript($event)"
+  (refreshScriptsEmitter)="refreshScripts()"
+  [scripts]="scripts$ | async"
+></app-script-manager-list>
+<app-cron-list
+  (refreshCronsEmitter)="refreshCrons()"
+  (deleteCronEmitter)="deleteCron($event)"
+  [crons]="crons$ | async"
+></app-cron-list>
+<app-script-manager-history
+  [history]="history$ | async"
+  (terminateScriptEmitter)="terminateScript($event)"
+  (refresh)="refreshHistory()"
+></app-script-manager-history>
+
+<aside class="app-dark mat-app-background">
+  <app-script-manager-create (createScriptEmitter)="create($event)"></app-script-manager-create>
+  <app-cron-create [scripts]="scripts$ | async" (createCronEmitter)="createCron($event)"></app-cron-create>
+</aside>

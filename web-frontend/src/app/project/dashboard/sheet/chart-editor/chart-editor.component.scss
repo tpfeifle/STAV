@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+mat-card {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.parameter-association-rows {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 10px 0;
+}
+
+.parameter-association-rows mat-select {
+  grid-column: 2 / 3;
+}
+.parameter-association-rows .parameter-label {
+  grid-column: 1 / 2;
+  padding: 0 10px;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px;
+}

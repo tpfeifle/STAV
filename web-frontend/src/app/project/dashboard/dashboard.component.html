@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+  <mat-sidenav class="sidenav" mode="over" position="end" [opened]="chartToEdit | async" (closed)="removeChartToEdit()">
+    <app-chart-editor
+      *ngIf="(chartToEdit | async)"
+      [chart]="chartToEdit | async"
+      [sensorTables]="sensorTables | async"
+      (save)="saveChart($event)"
+    ></app-chart-editor>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main">
+    <div class="sheet-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<footer class="app-dark">
+  <nav mat-tab-nav-bar>
+    <ng-container *ngFor="let sheet of sheets">
+      <a
+        mat-tab-link
+
+        [routerLink]="sheet.id"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        {{ sheet.name }}
+        <mat-icon (click)="removeSheet(sheet)">close</mat-icon>
+      </a>
+    </ng-container>
+
+    <button mat-button (click)="openCreateDialog()">
+      <mat-icon>add</mat-icon>
+      <span class="aligned-with-icon">Sheet</span>
+    </button>
+  </nav>
+</footer>

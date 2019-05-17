@@ -1,0 +1,29 @@
+:host,
+main {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+nav {
+  position: fixed;
+  bottom: 40px;
+  left: 10px;
+  z-index:12;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+.mat-toolbar {
+  position: fixed;
+  z-index: 200;
+}
+
+mat-form-field {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,9 @@
+<app-parser-list
+  [parsers]="parsers$ | async"
+  (removeParserEmitter)="remove($event)"
+  (clearParserDataEmitter)="clearData($event)"
+></app-parser-list>
+
+<aside class="app-dark mat-app-background">
+  <app-parser-create (createParserEmitter)="create($event)"></app-parser-create>
+</aside>

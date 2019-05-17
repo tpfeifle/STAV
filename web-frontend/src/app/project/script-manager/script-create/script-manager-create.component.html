@@ -1,0 +1,27 @@
+<h2 class="mat-h2">Create script</h2>
+<form [formGroup]="createForm" (ngSubmit)="createScript()">
+  <mat-form-field>
+    <input matInput placeholder="Title" formControlName="title" />
+  </mat-form-field>
+  <input id="input-python-script" class="input-file" multiple type="file" (change)="onScriptFileChange($event)" />
+  <label
+    class="mat-raised-button upload-button"
+    matTooltip="python script"
+    for="input-python-script">Upload Script</label>
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngIf="createForm.value.fileScript">
+      {{createForm.value.fileScript.name}}
+    </mat-list-item>
+  </mat-list>
+  <input id="input-pip-requirements" class="input-file" multiple type="file" (change)="onPipRequirementFileChange($event)" />
+  <label
+    class="mat-raised-button upload-button"
+    matTooltip="pipPackages.txt"
+    for="input-pip-requirements">Upload Pip-Requirements</label>
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngIf="createForm.value.filePipRequirements">
+      {{createForm.value.filePipRequirements.name}}
+    </mat-list-item>
+  </mat-list>
+  <button [disabled]="createForm.invalid" mat-raised-button color="primary">Create</button>
+</form>

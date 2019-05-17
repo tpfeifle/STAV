@@ -1,0 +1,30 @@
+<h2 class="mat-h2">Create Parser</h2>
+<form [formGroup]="createForm" (ngSubmit)="createParser()">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Topic" formControlName="topic" />
+  </mat-form-field>
+  <input id="input-python-script" class="input-file" multiple type="file" (change)="onScriptFileChange($event)" />
+  <label
+    class="mat-raised-button upload-button"
+    matTooltip="python script"
+    for="input-python-script">Upload Parser</label>
+  <mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let file of parserFiles">
+      {{file.name}}
+    </mat-list-item>
+  </mat-list>
+  <input id="input-pip-requirements" class="input-file" multiple type="file" (change)="onPipRequirementFileChange($event)" />
+  <label
+    class="mat-raised-button upload-button"
+    matTooltip="pipPackages.txt"
+    for="input-pip-requirements">Upload Pip-Requirements</label>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        {{createForm.value.filePipRequirements.name}}
+      </mat-list-item>
+    </mat-list>
+  <button [disabled]="createForm.invalid" mat-raised-button color="primary">Create</button>
+</form>

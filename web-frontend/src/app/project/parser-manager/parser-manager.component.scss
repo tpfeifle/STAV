@@ -1,0 +1,27 @@
+@import "../../../theme";
+@import "~@angular/material/theming";
+
+:host {
+  display:grid;
+  grid-template-areas: 'parserList aside';
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 2rem;
+  height: 100%;
+}
+
+app-parser-list {
+  margin:20px 0 0 20px;
+  grid-area: parserList;
+}
+
+aside.app-dark.mat-app-background {
+  padding: 2rem;
+  grid-area: aside;
+  display: grid;
+  background-color: mat-color($tim-app-primary, A700);
+}
+aside app-parser-create {
+  justify-self: center;
+  align-self: center;
+  width: 80%;
+}

@@ -1,0 +1,23 @@
+<router-outlet></router-outlet>
+<button class="floating-fab" mat-fab color="accent" [matMenuTriggerFor]="addChartMenu">
+  <mat-icon>add</mat-icon>
+</button>
+<mat-menu #addChartMenu="matMenu">
+  <button mat-menu-item (click)="addChart(1)">Line-Chart</button>
+  <button mat-menu-item (click)="addChart(2)">Bar-Chart</button>
+  <!--<button mat-menu-item (click)="addChart(3)">Map-Chart</button>-->
+  <button mat-menu-item (click)="addChart(4)">Density-Chart</button>
+  <button mat-menu-item (click)="addChart(5)">HeatMap</button>
+  <button mat-menu-item (click)="addChart(6)">PointMap</button>
+  <button mat-menu-item (click)="addChart(7)">TrajectoryMap</button>
+</mat-menu>
+
+<section class="chart-wrapper" *ngIf="(charts | async)">
+  <app-chart-container
+    *ngFor="let chart of (charts | async); trackBy: chartIdentity"
+    [style.grid-column-end]="'span ' + chart.width"
+    [style.grid-row-end]="'span ' + chart.height"
+    [chart]="chart"
+    [sensorTables]="sensorTables | async"
+  ></app-chart-container>
+</section>

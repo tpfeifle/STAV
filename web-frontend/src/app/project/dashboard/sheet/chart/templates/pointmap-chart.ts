@@ -48,8 +48,8 @@ export class PointMapChart implements ChartTemplate {
             pointMappings[parameter.templateParameter] = defaults[parameter.templateParameter];
           } else {
             const sensorTableFieldIndex = this.sensorTable.fields.findIndex(field => field === parameter.assignedField);
-            pointMappings[parameter.templateParameter] = this.sensorTable.data.map(
-              entry => parseFloat(entry[sensorTableFieldIndex])
+            pointMappings[parameter.templateParameter] = this.sensorTable.data.map(entry =>
+              parseFloat(entry[sensorTableFieldIndex])
             );
           }
         });
@@ -112,7 +112,7 @@ export class PointMapChart implements ChartTemplate {
               ['get', 'size'],
               Math.min(...pointMappings.size),
               1,
-              1,
+              Math.max(...pointMappings.size),
               20
             ],
             'circle-color': [
@@ -121,7 +121,7 @@ export class PointMapChart implements ChartTemplate {
               ['get', 'color'],
               Math.min(...pointMappings.color),
               '#00FF00',
-              1,
+              Math.max(...pointMappings.color),
               '#0000FF'
             ]
           }
